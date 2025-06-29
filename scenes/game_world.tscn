@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl5eh8hbkjsex"]
+
+[ext_resource type="Script" uid="uid://bsoi4kkbe8nsd" path="res://scripts/game_world.gd" id="1_47u71"]
+[ext_resource type="PackedScene" uid="uid://6xxophu0dsxs" path="res://scenes/adult_chicken_char.tscn" id="2_bvgre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea1x0"]
+size = Vector2(1150.5, 178.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e08lw"]
+size = Vector2(92.25, 465)
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource("1_47u71")
+
+[node name="AdultChickenChar" parent="." instance=ExtResource("2_bvgre")]
+position = Vector2(256, -28)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(575.75, 556.25)
+shape = SubResource("RectangleShape2D_ea1x0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(47.875, 232.5)
+shape = SubResource("RectangleShape2D_e08lw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1104, 233)
+shape = SubResource("RectangleShape2D_e08lw")
+
+[node name="Panel" type="Panel" parent="."]
+offset_top = 465.0
+offset_right = 1153.0
+offset_bottom = 648.0

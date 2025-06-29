@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://6xxophu0dsxs"]
+
+[ext_resource type="Script" uid="uid://bl6yfbig6lini" path="res://scripts/adult_chicken_char.gd" id="1_ofsh4"]
+[ext_resource type="Texture2D" uid="uid://dpe6mtro7kw73" path="res://assets/sprites/LeftAdult_ChickSprite2.png" id="2_8wm2t"]
+[ext_resource type="Texture2D" uid="uid://b6ai4yjtq7rs1" path="res://assets/sprites/RightAdult_ChickSprite1.png" id="3_54w1m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tosoq"]
+height = 26.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q3ymp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8wm2t")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8wm2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_54w1m")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8wm2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_54w1m")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[node name="AdultChickenChar" type="CharacterBody2D"]
+script = ExtResource("1_ofsh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(248, 339)
+shape = SubResource("CapsuleShape2D_tosoq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(246, 340)
+sprite_frames = SubResource("SpriteFrames_q3ymp")
+animation = &"Idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(1.6, 1.6)
