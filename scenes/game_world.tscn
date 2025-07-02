@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://6xxophu0dsxs" path="res://scenes/adult_chicken_char.tscn" id="2_bvgre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ea1x0"]
-size = Vector2(1150.5, 178.5)
+size = Vector2(720.125, 226.813)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e08lw"]
-size = Vector2(92.25, 465)
+size = Vector2(531.781, 481.75)
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_47u71")
@@ -18,18 +18,33 @@ position = Vector2(256, -28)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(575.75, 556.25)
+position = Vector2(831, 533.594)
 shape = SubResource("RectangleShape2D_ea1x0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(47.875, 232.5)
+position = Vector2(269.891, 334)
 shape = SubResource("RectangleShape2D_e08lw")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1104, 233)
+position = Vector2(1395, 333)
 shape = SubResource("RectangleShape2D_e08lw")
 
 [node name="Panel" type="Panel" parent="."]
-offset_top = 465.0
-offset_right = 1153.0
-offset_bottom = 648.0
+offset_left = 472.0
+offset_top = 419.0
+offset_right = 1190.0
+offset_bottom = 499.0
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 472.0
+offset_top = 420.0
+offset_right = 796.0
+offset_bottom = 484.0
+rotation = -1.56825
+
+[node name="Panel3" type="Panel" parent="."]
+offset_left = 1128.0
+offset_top = 418.0
+offset_right = 1452.0
+offset_bottom = 482.0
+rotation = -1.56825
