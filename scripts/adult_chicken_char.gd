@@ -1,44 +1,50 @@
 extends CharacterBody2D
-# Sets speed and jump velocity
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
-# Default built in gravity in Godot
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@onready var animation = get_node("AnimationPlayer") # Sets the animation sprite for code reusablility 
+@onready var animation = get_node("AnimationPlayer")
 
-# Idle Animation 
 func _ready(): 
-	animation.play("Idle")
+    connect("area_entered", _on_area_entered)
+    animation.play("Idle")
+
+func _on_area_entered(area):
+    print("Chicken collided with: ", area.name)
+    if area.is_in_group("raining_arrows"):
+        print("Game Over!")
+        get_tree().paused = true
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+    # Add gravity
+    if not is_on_floor():
+        velocity.y += gravity * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		animation.play("Jump")
+    # Handle jump
+    if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+        velocity.y = JUMP_VELOCITY
+        animation.play("Jump")
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	
-	if direction == -1:
-		get_node("AnimatedSprite2D").flip_h = false
-	elif direction == 1:
-		get_node("AnimatedSprite2D").flip_h = true
+    # Handle left/right movement
+    var direction = Input.get_axis("ui_left", "ui_right")
 
-	if direction:
-		velocity.x = direction * SPEED
-		if velocity.y == 0:
-			animation.play("Run") # Plays run animation 
+    if direction == -1:
+        get_node("AnimatedSprite2D").flip_h = false
+    elif direction == 1:
+        get_node("AnimatedSprite2D").flip_h = true
 
-	else:
-		animation.play("Idle")
-		if velocity.y == 0:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-		if velocity.y > 0:
-			animation.play("Fall")
-	move_and_slide()
+    if direction != 0:
+        velocity.x = direction * SPEED
+        if is_on_floor():
+            if animation.current_animation != "Run":
+                animation.play("Run")
+    else:
+        if is_on_floor():
+            if animation.current_animation != "Idle":
+                animation.play("Idle")
+            velocity.x = move_toward(velocity.x, 0, SPEED)
+        elif velocity.y > 0:
+            if animation.current_animation != "Fall":
+                animation.play("Fall")
+
+    move_and_slide()
