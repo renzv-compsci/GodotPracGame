@@ -5,17 +5,20 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk16j"]
 radius = 4.0
-height = 16.0
+height = 26.0
 
-[node name="Raining arrows" type="Node2D"]
+[node name="Raining arrows" type="Area2D"]
 script = ExtResource("1_qugiw")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+texture_filter = 1
+position = Vector2(317, 169)
+scale = Vector2(0.75, 1.5)
+texture = ExtResource("2_hgb5e")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(274, 531)
+position = Vector2(317, 168)
 shape = SubResource("CapsuleShape2D_jk16j")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="Arrow" type="Sprite2D" parent="."]
-position = Vector2(274, 531)
-texture = ExtResource("2_hgb5e")
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
