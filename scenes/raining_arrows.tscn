@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://7rkmxbhee567"]
+
+[ext_resource type="Script" uid="uid://dlstklgd188po" path="res://scripts/raining_arrows.gd" id="1_qugiw"]
+[ext_resource type="Texture2D" uid="uid://doex6wlweqfna" path="res://assets/sprites/ArrowSprites/Arrow.png" id="2_hgb5e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk16j"]
+radius = 4.0
+height = 16.0
+
+[node name="Raining arrows" type="Node2D"]
+script = ExtResource("1_qugiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(274, 531)
+shape = SubResource("CapsuleShape2D_jk16j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(274, 531)
+texture = ExtResource("2_hgb5e")
