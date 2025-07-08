@@ -58,6 +58,7 @@ position = Vector2(0, -1)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
 position = Vector2(576, 324)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_wbbl4")
@@ -68,4 +69,14 @@ position = Vector2(256, -28)
 [node name="Raining arrows" parent="." instance=ExtResource("2_bhwwd")]
 position = Vector2(256, -28)
 
+[node name="RestartButton" type="Button" parent="."]
+process_mode = 3
+offset_left = 579.0
+offset_top = 270.0
+offset_right = 644.0
+offset_bottom = 301.0
+text = "Restart"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
