@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://6xxophu0dsxs"]
 
-[ext_resource type="Script" uid="uid://bl6yfbig6lini" path="res://scripts/adult_chicken_char.gd" id="1_ofsh4"]
+[ext_resource type="Script" uid="uid://bl6yfbig6lini" path="res://scripts/Chicken.gd" id="1_ofsh4"]
 [ext_resource type="Texture2D" uid="uid://b2cu1duoiq8ka" path="res://assets/sprites/JumpCrouch/000.png" id="2_eelt2"]
 [ext_resource type="Texture2D" uid="uid://ctmqd7nhtisq0" path="res://assets/sprites/JumpCrouch/001.png" id="3_cstkw"]
 [ext_resource type="Texture2D" uid="uid://b3enflp21ywi6" path="res://assets/sprites/IdleSprites/000.png" id="4_bok5m"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b8784oj3mx4ir" path="res://assets/sprites/WalkSprites/003.png" id="12_g6ikn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tosoq"]
-height = 26.0
+height = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3ymp"]
 animations = [{
@@ -225,6 +225,7 @@ position = Vector2(358, 290)
 shape = SubResource("CapsuleShape2D_tosoq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(358, 290)
 sprite_frames = SubResource("SpriteFrames_q3ymp")
 animation = &"Jump"
